@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact name="Snake.exe">
+    <output-path>$PROJECT_DIR$/out/artifacts/Snake_exe</output-path>
+    <root id="root" />
+  </artifact>
+</component>
