@@ -61,7 +61,7 @@ public class DataAccess {
 
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT playerName, highscore FROM player ORDER BY !highscore LIMIT " + num + "," + (num + 1) + ";");
+            ResultSet rs = stmt.executeQuery("SELECT playerName, highscore FROM player ORDER BY highscore desc LIMIT " + num + "," + (num + 1) + ";");
             while (rs.next()) {
                 return (rs.getString(1) + " " + rs.getInt(2));
             }
