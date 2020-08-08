@@ -57,7 +57,6 @@ public class Draw extends JLabel {
         g.drawString("2nd: " + DataAccess.getLeaderScore(1), 655, 50);
         g.drawString("3th: " + DataAccess.getLeaderScore(2), 655, 75);
 
-
         repaint();
     }
 }

@@ -4,6 +4,7 @@ import actions.Collision;
 import game.Snake;
 
 public class GameClock extends Thread {
+
     public static boolean running = true;
 
     public void run() {

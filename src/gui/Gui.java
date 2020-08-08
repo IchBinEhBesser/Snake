@@ -12,7 +12,6 @@ public class Gui {
     Draw d;
 
     public void create() {
-
         jf = new JFrame("Snake");
         jf.setSize(width, height);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -53,8 +53,5 @@ public class Login {
         jFrame.add(logButton);
 
         jFrame.setVisible(true);
-
-
     }
-
 }

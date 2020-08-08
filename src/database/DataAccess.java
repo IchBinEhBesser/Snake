@@ -10,12 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DataAccess {
-
     static Connection con = MySQLCon.con;
-
-
     public static Boolean checkPlayer(String pNa, String pPw) {
-
         try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select playerName, playerPassword from player");
@@ -50,25 +46,19 @@ public class DataAccess {
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, highScore);
             preparedStmt.setString(2, Login.playerName);
-
             preparedStmt.executeUpdate();
-
         } catch (Exception e) {
             System.out.println(e);
-
         }
-
     }
 
     public static String getLeaderScore(int num) {
-
         try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT playerName, highscore FROM player ORDER BY highscore desc LIMIT " + num + "," + (num + 1) + ";");
             while (rs.next()) {
                 return (rs.getString(1) + " " + rs.getInt(2));
             }
-
         } catch (Exception e) {
             System.out.println(e);
         }
