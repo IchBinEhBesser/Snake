@@ -31,4 +31,15 @@ public class Collision {
             }
         }
     }
+
+    public static void colliedMultiplier() {
+        if (Snake.head.getX() == Snake.multiplier.getX() && Snake.head.getY() == Snake.multiplier.getY()) {
+            Snake.multiplier.reset();
+            Snake.addTail();
+            Snake.score++;
+            if (Snake.score > Snake.bestscore) {
+                Snake.bestscore = Snake.score;
+            }
+        }
+    }
 }

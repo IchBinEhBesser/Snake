@@ -19,6 +19,7 @@ public class DataAccess {
                 if (rs.getString(1).equals(pNa) && rs.getString(2).equals(pPw)) {
                     Login.playerName = pNa;
                     Login.playerPassword = pPw;
+                    Login.jFrame.setVisible(false);
                     Main.startGame(true);
                 }
             Main.startGame(false);

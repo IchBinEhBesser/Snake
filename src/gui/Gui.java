@@ -3,6 +3,7 @@ package gui;
 import actions.KeyHandler;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Gui {
 
@@ -16,9 +17,20 @@ public class Gui {
         jf.setSize(width, height);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setLocationRelativeTo(null);
-        jf.setLayout(null);
+        jf.setLayout(new BorderLayout());
         jf.setResizable(false);
         jf.addKeyListener(new KeyHandler());
+
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu fileMenu = new JMenu("File");
+        JMenu editMenu = new JMenu("Edit");
+
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+
+        jf.add(menuBar);
 
         d = new Draw();
         d.setBounds(0, 0, width, height);
