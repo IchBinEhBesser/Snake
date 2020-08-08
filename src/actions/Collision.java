@@ -3,9 +3,7 @@ package actions;
 import database.DataAccess;
 import game.Snake;
 
-import javax.xml.crypto.Data;
-
-public class Collison {
+public class Collision {
 
     public static boolean colliedSelf() {
         DataAccess.setHighScore(Snake.bestscore);
@@ -28,7 +26,7 @@ public class Collison {
             Snake.pickup.reset();
             Snake.addTail();
             Snake.score++;
-            if(Snake.score > Snake.bestscore){
+            if (Snake.score > Snake.bestscore) {
                 Snake.bestscore = Snake.score;
             }
         }

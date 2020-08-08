@@ -4,7 +4,10 @@ package database;
 import actions.Main;
 import gui.Login;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class DataAccess {
 
@@ -32,7 +35,7 @@ public class DataAccess {
     public static int getHighScore(String playerName) {
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select max(highscore) from player where playerName = '"+ playerName +"'");
+            ResultSet rs = stmt.executeQuery("select max(highscore) from player where playerName = '" + playerName + "'");
             while (rs.next())
                 return rs.getInt(1);
         } catch (Exception e) {

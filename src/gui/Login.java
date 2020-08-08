@@ -11,10 +11,9 @@ public class Login {
 
     public static String playerName;
     public static String playerPassword;
-
-    JFrame jFrame;
     private final int width = 100;
     private final int height = 75;
+    JFrame jFrame;
 
     public void create() {
 

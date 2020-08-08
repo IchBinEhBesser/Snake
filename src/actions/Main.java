@@ -18,11 +18,11 @@ public class Main {
 
     }
 
-    public static void startGame(Boolean b){
+    public static void startGame(Boolean b) {
 
         Snake.bestscore = DataAccess.getHighScore(Login.playerName);
 
-        if(b){
+        if (b) {
             Gui g = new Gui();
             GameClock gc = new GameClock();
             g.create();

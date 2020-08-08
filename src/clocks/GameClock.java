@@ -1,22 +1,23 @@
 package clocks;
 
-import actions.Collison;
+import actions.Collision;
 import game.Snake;
 
-public class GameClock extends Thread{
+public class GameClock extends Thread {
     public static boolean running = true;
-    public void run(){
-        while(running){
+
+    public void run() {
+        while (running) {
             try {
                 sleep(200);
                 Snake.move();
                 Snake.waitToMove = false;
-                Collison.colliedPickUp();
-                if(Collison.colliedSelf()){
+                Collision.colliedPickUp();
+                if (Collision.colliedSelf()) {
                     Snake.tails.clear();
                     Snake.score = 0;
                 }
-                if(Collison.colliedWall()){
+                if (Collision.colliedWall()) {
                     Snake.tails.clear();
                     Snake.head.setX(7);
                     Snake.head.setY(7);

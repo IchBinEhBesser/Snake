@@ -2,7 +2,7 @@ package game;
 
 public class Tail {
 
-    int x,y;
+    int x, y;
     boolean wait = true;
 
     public Tail(int x, int y) {

@@ -1,20 +1,17 @@
 package gui;
 
 import actions.KeyHandler;
-import database.DataAccess;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Gui {
 
+    public static int width = 800, height = 600;
+    public static int xoff = 130, yoff = 20;
     JFrame jf;
     Draw d;
 
-    public static int width = 800, height = 600;
-    public static int xoff = 130, yoff = 20;
-
-    public void create(){
+    public void create() {
 
         jf = new JFrame("Snake");
         jf.setSize(width, height);
@@ -25,7 +22,7 @@ public class Gui {
         jf.addKeyListener(new KeyHandler());
 
         d = new Draw();
-        d.setBounds(0,0,width,height);
+        d.setBounds(0, 0, width, height);
         d.setVisible(true);
         jf.add(d);
 
