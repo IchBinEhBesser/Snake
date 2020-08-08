@@ -29,10 +29,10 @@ public class DataAccess {
         return false;
     }
 
-    public static int getHighScore() {
+    public static int getHighScore(String playerName) {
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select max(highscore) from player");
+            ResultSet rs = stmt.executeQuery("select max(highscore) from player where playerName = '"+ playerName +"'");
             while (rs.next())
                 return rs.getInt(1);
         } catch (Exception e) {

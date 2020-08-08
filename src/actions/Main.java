@@ -20,7 +20,7 @@ public class Main {
 
     public static void startGame(Boolean b){
 
-        Snake.bestscore = DataAccess.getHighScore();
+        Snake.bestscore = DataAccess.getHighScore(Login.playerName);
 
         if(b){
             Gui g = new Gui();

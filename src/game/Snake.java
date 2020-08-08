@@ -10,7 +10,7 @@ public class Snake {
 
     public static int score = 0;
 
-    public static int bestscore = 0;
+    public static int bestscore ;
 
     public static boolean waitToMove = false;
 
@@ -70,5 +70,9 @@ public class Snake {
         p.y = y * 32 + Gui.yoff;
 
         return p;
+    }
+
+    public static int getBestScore(){
+        return Integer.parseInt(DataAccess.getLeaderScore(0));
     }
 }
