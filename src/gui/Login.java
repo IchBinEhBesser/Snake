@@ -19,7 +19,6 @@ public class Login {
 
     public void create() {
 
-
         jFrame = new JFrame("Snake-Login");
         jFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         jFrame.setSize(250, 175);

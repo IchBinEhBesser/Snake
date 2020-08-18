@@ -73,11 +73,16 @@ public class DataAccess {
 
     public static Boolean registradePlayer(String pNa, String pPw) {
         try {
-
-            Statement statement = con.createStatement();
-            statement.executeUpdate("INSERT INTO player (playerName,playerPassword) VALUES ('" + pNa + "','" + pPw + "');");
-            Login.regInfo.setVisible(true);
-            Register.jFrame.dispose();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT playerName from player where playerName = '" + pNa + "';");
+            rs.next();
+            if (rs.getString(1).equals(pNa)) {
+                Register.regInfo.setVisible(true);
+            } else {
+                stmt.executeUpdate("INSERT INTO player (playerName,playerPassword) VALUES ('" + pNa + "','" + pPw + "');");
+                Login.regInfo.setVisible(true);
+                Register.jFrame.dispose();
+            }
             return false;
         } catch (Exception e) {
             System.out.println(e);

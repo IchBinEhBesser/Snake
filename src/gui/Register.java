@@ -15,12 +15,14 @@ public class Register {
     private final int height = 75;
     public static JFrame jFrame;
 
+    public static JLabel regInfo = new JLabel("Benutzer existiert schon");
+
 
     public void create() {
 
         jFrame = new JFrame("Snake-Registration");
         jFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        jFrame.setSize(250, 150);
+        jFrame.setSize(250, 175);
         jFrame.setResizable(true);
         jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         jFrame.setLocationRelativeTo(null);
@@ -34,6 +36,12 @@ public class Register {
         pwField.setPreferredSize(new Dimension(200, 24));
         pwField.setVisible(true);
         jFrame.add(pwField);
+
+        regInfo.setPreferredSize(new Dimension(215, 10));
+        regInfo.setAlignmentX(FlowLayout.CENTER);
+        regInfo.setForeground(Color.red);
+        regInfo.setVisible(false);
+        jFrame.add(regInfo);
 
         JButton regButton = new JButton("Register");
         regButton.setFocusPainted(false);
