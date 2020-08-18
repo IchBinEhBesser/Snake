@@ -15,7 +15,7 @@ public class Login {
     private final int height = 75;
     public static JFrame jFrame;
 
-    public void create(String un , String pw) {
+    public void create() {
 
 
         jFrame = new JFrame("Snake-Login");
@@ -25,12 +25,12 @@ public class Login {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setLocationRelativeTo(null);
 
-        JTextField unField = new JTextField(un);
+        JTextField unField = new JTextField("Username");
         unField.setPreferredSize(new Dimension(200, 24));
         unField.setVisible(true);
         jFrame.add(unField);
 
-        JTextField pwField = new JTextField(pw);
+        JTextField pwField = new JTextField("Password");
         pwField.setPreferredSize(new Dimension(200, 24));
         pwField.setVisible(true);
         jFrame.add(pwField);

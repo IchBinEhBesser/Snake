@@ -13,7 +13,7 @@ public class Main {
 
         MySQLCon con = new MySQLCon();
         Login login = new Login();
-        login.create("Maxi","1234");
+        login.create();
 
 
     }
