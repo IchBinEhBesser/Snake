@@ -3,6 +3,7 @@ package database;
 
 import actions.Main;
 import gui.Login;
+import gui.Register;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +12,8 @@ import java.sql.Statement;
 
 public class DataAccess {
     static Connection con = MySQLCon.con;
+
+
     public static Boolean checkPlayer(String pNa, String pPw) {
         try {
             Statement stmt = con.createStatement();
@@ -21,8 +24,10 @@ public class DataAccess {
                     Login.playerPassword = pPw;
                     Login.jFrame.setVisible(false);
                     Main.startGame(true);
+
                 }
-            Main.startGame(false);
+            Login.logInfo.setVisible(true);
+            return false;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -64,5 +69,19 @@ public class DataAccess {
             System.out.println(e);
         }
         return "Error in getLeaderScore()";
+    }
+
+    public static Boolean registradePlayer(String pNa, String pPw) {
+        try {
+
+            Statement statement = con.createStatement();
+            statement.executeUpdate("INSERT INTO player (playerName,playerPassword) VALUES ('" + pNa + "','" + pPw + "');");
+            Login.regInfo.setVisible(true);
+            Register.jFrame.dispose();
+            return false;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
 }
