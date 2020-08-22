@@ -10,7 +10,7 @@ public class MySQLCon {
     public MySQLCon() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://91.11.193.92:3306/snake", "SnakeUser", "snake");
+            con = DriverManager.getConnection("jdbc:mysql://79.200.38.45:3306/snake", "SnakeUser", "snake");
         } catch (Exception e) {
             System.out.println(e);
         }

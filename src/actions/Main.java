@@ -13,6 +13,7 @@ public class Main {
         MySQLCon con = new MySQLCon();
         Login login = new Login();
         login.create();
+
     }
 
     public static void startGame(Boolean b) {
