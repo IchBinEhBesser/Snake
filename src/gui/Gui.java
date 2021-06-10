@@ -5,10 +5,10 @@ import actions.KeyHandler;
 import javax.swing.*;
 import java.awt.*;
 
-public class Gui {
+public class Gui implements Runnable {
 
-    public static int width = 800, height = 600;
-    public static int xoff = 130, yoff = 20;
+    public static int width = 930, height = 600;
+    public static int xoff = 200, yoff = 20;
     JFrame jf;
     Draw d;
 
@@ -23,9 +23,12 @@ public class Gui {
 
 
         JMenuBar menuBar = new JMenuBar();
+        menuBar.setVisible(true);
 
         JMenu fileMenu = new JMenu("File");
+        fileMenu.setVisible(true);
         JMenu editMenu = new JMenu("Edit");
+        editMenu.setVisible(true);
 
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
@@ -40,5 +43,10 @@ public class Gui {
         jf.requestFocus();
         jf.setVisible(true);
 
+    }
+
+    @Override
+    public void run() {
+        create();
     }
 }

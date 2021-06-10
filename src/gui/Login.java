@@ -1,27 +1,27 @@
 package gui;
 
 import database.DataAccess;
+import database.MySQLCon;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Login {
 
     public static String playerName;
     public static String playerPassword;
-    private final int width = 100;
-    private final int height = 75;
-    public static JFrame jFrame;
+    public static String ipSever;
     public static JLabel logInfo = new JLabel("Benutzername oder Passwort falsch!");
+    private final int width = 250;
+    public static JFrame jFrame;
+    private final int height = 200;
     public static JLabel regInfo = new JLabel("Benutzer wurde erstellt");
 
     public void create() {
 
         jFrame = new JFrame("Snake-Login");
         jFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        jFrame.setSize(250, 175);
+        jFrame.setSize(width, height);
         jFrame.setResizable(false);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setLocationRelativeTo(null);
@@ -36,6 +36,11 @@ public class Login {
         pwField.setVisible(true);
         jFrame.add(pwField);
 
+        JTextField ipField = new JTextField("Server-IP");
+        ipField.setPreferredSize(new Dimension(200, 24));
+        ipField.setVisible(true);
+        jFrame.add(ipField);
+
         logInfo.setPreferredSize(new Dimension(215, 10));
         logInfo.setAlignmentX(FlowLayout.CENTER);
         logInfo.setForeground(Color.RED);
@@ -48,16 +53,14 @@ public class Login {
         regInfo.setVisible(false);
         jFrame.add(regInfo);
 
+
         JButton regButton = new JButton("Register");
         regButton.setFocusPainted(false);
         regButton.setSize(100, 50);
         regButton.setVisible(true);
-        regButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Register register = new Register();
-                register.create();
-            }
+        regButton.addActionListener(e -> {
+            Register register = new Register();
+            register.create();
         });
         jFrame.add(regButton);
 
@@ -65,12 +68,10 @@ public class Login {
         logButton.setFocusPainted(false);
         logButton.setSize(100, 50);
         logButton.setVisible(true);
-        logButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                regInfo.setVisible(false);
-                DataAccess.checkPlayer(unField.getText(), pwField.getText());
-            }
+        logButton.addActionListener(e -> {
+            regInfo.setVisible(false);
+            new MySQLCon(ipField.getText());
+            DataAccess.confirmPlayer(unField.getText(), pwField.getText());
         });
         jFrame.add(logButton);
 

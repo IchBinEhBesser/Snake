@@ -1,5 +1,6 @@
 package gui;
 
+import clocks.GameClock;
 import database.DataAccess;
 import game.Snake;
 
@@ -9,6 +10,12 @@ import java.awt.*;
 public class Draw extends JLabel {
 
     Point p;
+
+    long firstFrame;
+    int frames;
+    long currentFrame;
+    int fps;
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -56,14 +63,33 @@ public class Draw extends JLabel {
         g.setColor(Color.black);
         g.drawRect(Gui.xoff, Gui.yoff, 512, 512);
 
+        //nun in paint() / update() bzw. paintComponent() ...
+        frames++;
+        currentFrame = System.currentTimeMillis();
+        if (currentFrame > firstFrame + 1000) {
+            firstFrame = currentFrame;
+            fps = frames;
+            frames = 0;
+        }
+
+
         //Draw Score
         g.setFont(new Font("Arial", Font.BOLD, 20));
         g.drawString("Player: " + Login.playerName, 5, 25);
         g.drawString("Score: " + Snake.score, 5, 50);
-        g.drawString("1st: " + DataAccess.getLeaderScore(0), 655, 25);
-        g.drawString("2nd: " + DataAccess.getLeaderScore(1), 655, 50);
-        g.drawString("3th: " + DataAccess.getLeaderScore(2), 655, 75);
+        g.drawString("Velocity: " + GameClock.velocity, 5, 75);
+        g.drawString("FPS: " + fps, 5, 100);
+
+        drawScoreBoard(g);
 
         repaint();
+    }
+
+    public void drawScoreBoard(Graphics gr) {
+
+        for (int i = 0; i < DataAccess.getPlayerCount(); i++) {
+            gr.drawString((i + 1) + "st: " + DataAccess.getLeaderboard()[i], 730, 25 + i * 25);
+        }
+
     }
 }

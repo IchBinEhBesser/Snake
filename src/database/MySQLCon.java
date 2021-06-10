@@ -2,17 +2,24 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class MySQLCon {
 
-    static Connection con;
+    public static Connection con;
 
-    public MySQLCon() {
+    public static String serverIp;
+
+    public MySQLCon(String sIp) {
+
+        serverIp = sIp;
+
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://79.200.38.45:3306/snake", "SnakeUser", "snake");
-        } catch (Exception e) {
-            System.out.println(e);
+            con = DriverManager.getConnection("jdbc:mysql://" + MySQLCon.serverIp + ":3306/snake", "SnakeUser2", "test");
+
+        } catch (SQLException e) {
+            con = null;
+            e.printStackTrace();
         }
     }
 }
