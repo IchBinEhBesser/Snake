@@ -11,12 +11,10 @@ public class Register {
 
     public static String playerName;
     public static String playerPassword;
+    public static JFrame jFrame;
+    public static JLabel regInfo = new JLabel("Benutzer existiert schon");
     private final int width = 100;
     private final int height = 75;
-    public static JFrame jFrame;
-
-    public static JLabel regInfo = new JLabel("Benutzer existiert schon");
-
 
     public void create() {
 

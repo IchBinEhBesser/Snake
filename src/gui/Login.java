@@ -12,10 +12,10 @@ public class Login {
     public static String playerPassword;
     public static String ipSever;
     public static JLabel logInfo = new JLabel("Benutzername oder Passwort falsch!");
-    private final int width = 250;
     public static JFrame jFrame;
-    private final int height = 200;
     public static JLabel regInfo = new JLabel("Benutzer wurde erstellt");
+    private final int width = 250;
+    private final int height = 200;
 
     public void create() {
 

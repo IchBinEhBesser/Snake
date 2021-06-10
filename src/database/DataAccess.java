@@ -14,9 +14,8 @@ import java.util.Arrays;
 
 public class DataAccess {
 
-    static Connection con = MySQLCon.con;
-
     public static String[] leaderboard = new String[8];
+    static Connection con = MySQLCon.con;
     private static int numPlayers = 0;
     private static int personalHighscore = 0;
 
