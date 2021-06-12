@@ -9,21 +9,28 @@ public class GameClock implements Runnable {
     public static int velocity = 160;
 
     public static void prGame() {
+        System.out.println(running);
         running = !running;
     }
 
-    public void run() {
+    public synchronized void run() {
+
         while (true) {
 
-            while (running) {
+
+            //ThreadHandler.syncronizeThreads();
+            //System.out.println(running);                    //hours wasted to remove: 0.6
+
+            while (getRunning()) {
 
                 try {
-                    if (velocity < 20) {
-                        velocity = 20;
+                    if (velocity < 50) {
+                        velocity = 50;
                     }
                     Thread.sleep(velocity);
                     Snake.move();
                     Snake.waitToMove = false;
+
                     Collision.colliedPickUp();
                     Collision.colliedMultiplier();
                     if (Collision.colliedSelf()) {
@@ -42,7 +49,13 @@ public class GameClock implements Runnable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
             }
         }
     }
+
+    public Boolean getRunning() {
+        return running;
+    }
+
 }

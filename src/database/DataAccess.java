@@ -1,6 +1,5 @@
 package database;
 
-
 import actions.Main;
 import gui.Login;
 import gui.Register;
@@ -10,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Arrays;
-
 
 public class DataAccess {
 

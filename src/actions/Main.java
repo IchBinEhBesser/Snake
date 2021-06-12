@@ -10,6 +10,9 @@ public class Main {
 
     //public static MySQLCon mc;
 
+    public static Thread guiThread;
+    public static Thread gcThread;
+
     public static void main(String[] args) {
 
         Login login = new Login();
@@ -25,13 +28,17 @@ public class Main {
             //DataAccess.loadPlayerCount();
 
             Gui g = new Gui();
-            Thread guiThread = new Thread(g);
+            guiThread = new Thread(g);
 
             GameClock gc = new GameClock();
-            Thread gcThread = new Thread(gc);
+            gcThread = new Thread(gc);
+
+            KeyHandler inputHandler = new KeyHandler();
+            Thread inputThread = new Thread(inputHandler);
 
             guiThread.start();
             gcThread.start();
+            inputThread.start();
 
         }
     }

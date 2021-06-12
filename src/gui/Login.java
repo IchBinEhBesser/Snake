@@ -5,12 +5,16 @@ import database.MySQLCon;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 public class Login {
 
     public static String playerName;
     public static String playerPassword;
-    public static String ipSever;
+    public String ipSever = getExternalIPv4();
     public static JLabel logInfo = new JLabel("Benutzername oder Passwort falsch!");
     public static JFrame jFrame;
     public static JLabel regInfo = new JLabel("Benutzer wurde erstellt");
@@ -18,6 +22,7 @@ public class Login {
     private final int height = 200;
 
     public void create() {
+
 
         jFrame = new JFrame("Snake-Login");
         jFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -38,6 +43,7 @@ public class Login {
 
         JTextField ipField = new JTextField("Server-IP");
         ipField.setPreferredSize(new Dimension(200, 24));
+        ipField.setText(ipSever);
         ipField.setVisible(true);
         jFrame.add(ipField);
 
@@ -70,13 +76,25 @@ public class Login {
         logButton.setVisible(true);
         logButton.addActionListener(e -> {
             regInfo.setVisible(false);
-            new MySQLCon(ipField.getText());
+            MySQLCon con = new MySQLCon(ipField.getText());
             DataAccess.confirmPlayer(unField.getText(), pwField.getText());
         });
         jFrame.add(logButton);
 
         jFrame.setVisible(true);
 
+    }
 
+    private String getExternalIPv4() {
+
+        try {
+            URL wmIp = new URL("http://checkip.amazonaws.com");
+            BufferedReader in = new BufferedReader(new InputStreamReader(wmIp.openStream()));
+            return in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "Get the ip yourself...";
     }
 }

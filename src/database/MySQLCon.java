@@ -15,7 +15,7 @@ public class MySQLCon {
         serverIp = sIp;
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://" + MySQLCon.serverIp + ":3306/snake", "SnakeUser2", "test");
+            con = DriverManager.getConnection("jdbc:mysql://" + sIp + ":3306/snake", "SnakeUser2", "test");
 
         } catch (SQLException e) {
             con = null;

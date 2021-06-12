@@ -21,7 +21,6 @@ public class Gui implements Runnable {
         jf.setResizable(false);
         jf.addKeyListener(new KeyHandler());
 
-
         JMenuBar menuBar = new JMenuBar();
         menuBar.setVisible(true);
 

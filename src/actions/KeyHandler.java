@@ -7,7 +7,7 @@ import game.Snake;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyHandler implements KeyListener {
+public class KeyHandler implements KeyListener, Runnable {
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -15,7 +15,7 @@ public class KeyHandler implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public synchronized void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
                 if (!(Snake.head.getDir() == Dir.DOWN) && !Snake.waitToMove) {
@@ -43,6 +43,7 @@ public class KeyHandler implements KeyListener {
                 break;
             case KeyEvent.VK_SPACE:
                 GameClock.prGame();
+                //GameClock.running = !GameClock.running;
                 break;
         }
     }
@@ -50,5 +51,13 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    @Override
+    public void run() {
+        int a = 0;
+        while (a < 10) {
+            a++;
+        }
     }
 }
